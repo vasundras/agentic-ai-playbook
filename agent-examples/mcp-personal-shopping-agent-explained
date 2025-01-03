@@ -1,0 +1,20 @@
+Steps in the Diagram Explained Through Anthropic Guide
+Customer → Agent: Submit Shopping Query: This step aligns with the Routing Pattern, where an incoming query is analyzed to identify relevant tools and workflows. Routing prevents unnecessary computation and ensures targeted task execution.
+Agent → Model 1: Query Processor: This represents Prompt Chaining, where the agent breaks the query into smaller tasks for better reasoning. Smaller, specific prompts reduce the risk of errors and make outputs more controllable.
+Model 1 → Tool Registry: Retrieve Available Tools: This step follows the Orchestrator-Worker Pattern, with the orchestrator delegating tool discovery. Modular design ensures each tool operates independently, reducing complexity.
+Tool Registry → Model 1: Return Tool Specifications: This Highlights Agent-Computer Interface (ACI) principles, focusing on clear tool integration. Well-documented interfaces minimize ambiguity and integration failures
+Model 1 → Product Service: Fetch Relevant Products: Another application of Routing, where the query is directed specifically to the product database. Ensures specialized systems handle focused tasks efficiently.
+Product Service → Model 1: Return Product Data: Structured data returns ensure clarity and consistency for downstream tasks. Accurate data feeds improve subsequent reasoning steps.
+7. Model 1 → User Profile: Fetch User Preferences: In this step we implement Context Augmentation, enriching the query with user-specific context. Personalized inputs lead to tailored recommendations.
+
+8. User Profile → Model 1: Return User Profile Data: This completes the context-gathering phase for enriched processing. A combination of static (product) and dynamic (user) data creates a holistic picture.
+
+9. Model 1 → Model 2: Analyze Data & Generate Recommendations: This step applies the Evaluator-Optimizer Loop, where one model processes while another evaluates and refines results. Decoupling analysis and evaluation improves the quality of outputs and minimizes errors
+
+10. Agent → Customer: Provide Shopping Recommendations: This step follows Transparency Principles from Anthropic’s guide, ensuring the recommendations are interpretable. Transparent outputs increase user trust and reliability.
+
+Summary of the Rationale for Design Choices
+Routing and Modularity: Each query is routed to specialized systems, reducing unnecessary overhead.
+Context Integration: User profile and product data are combined contextually to ensure relevant recommendations.
+Pattern Alignment: The workflow uses Prompt Chaining, Evaluator-Optimizer Loops, and Orchestrator-Workers to maximize efficiency.
+Simplicity Over Complexity: Models are focused on specific responsibilities, avoiding unnecessary abstractions.
