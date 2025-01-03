@@ -1,1 +1,32 @@
+# Practical Application: Building a Personalized Shopping Assistant
+This is inspired by the broad principles and patterns covered in Anthropic's Guide for building effective AI agents. Here, we explore a practical application: building a personalized shopping assistant. We'll see how core concepts from the guide can transform the B2C shopping experience while maintaining the guide's emphasis on simplicity and effectiveness.
 
+# The first decision - is it an agent or a workflow?
+Based on the guide's definitions, our shopping assistant should be implemented as an agent rather than a workflow for several key reasons:
+Dynamic Decision Making: Shopping interactions require flexible, context-aware responses that can't be predetermined. As the guide notes, agents are systems "where LLMs dynamically direct their own processes and tool usage."
+Open-ended Problems: Shopping queries can take many forms and require different combinations of tools and approaches that can't be hardcoded into fixed workflows.
+Environmental Feedback: The system needs to continuously adapt based on inventory changes, user responses, and other real-time factors.
+
+# Moving on to - Pattern Selection
+Among the patterns described in the guide, we'll primarily use the Orchestrator-Workers pattern, supplemented with Routing for specific subtasks. 
+Here's why:
+1. Our central orchestrator can decompose complex shopping queries ("I need a business casual wardrobe suggestions for under $500" - side bar, where can I find this?!)
+2. Specialized workers can handle specific aspects:
+- Product matching worker
+- Price optimization worker
+- Style recommendation worker
+3. Results can be synthesized into cohesive recommendations
+
+# Why Not Other Patterns:
+- Prompt Chaining: Too rigid for dynamic shopping interactions
+- Parallelization: Shopping queries typically require sequential, context-aware processing
+- Evaluator-Optimizer: Better suited for content generation than interactive shopping
+
+# Next up - Establishing Model Context Protocol
+The Model Context Protocol is a crucial concept for building effective AI agents. It provides a standardized way for LLMs to interact with external tools and services while maintaining a clear understanding of the tools' capabilities and requirements. This is where we need to put ourselves in the agent's shoes.
+Here's how we can apply it to our Personalized Shopping Agent
+1. Dynamic Tool Discovery: The agent can discover available shopping-related tools. These tools can be added or modified without changing the agent's core logic. Here's where we provide a clear understanding of when and how to use each tool
+2. Standardized Interactions: We need to provide a consistent format for product searches and a uniform way to access customer profiles. In addition to this, we need to provide a standardized method for inventory checks and identify a common pattern for order processing
+3. Error Handling: One of the most frustrating experiences is when we select a product but its out of stock. We need to define a clear protocol for handling out-of-stock items and a standard way to deal with pricing discrepancies. Apart from this we need to establish a uniform approach to customer preference conflicts.
+
+Check out the Orchestrator Worker Pattern diagram in this folder. 
